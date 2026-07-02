@@ -1,10 +1,12 @@
 <?php namespace EvolutionCMS\Main\Controllers;
 
+use DocumentParser;
 use Illuminate\Support\Facades\Cache;
 
 class BaseController
 {
-    public $evo = [];
+    /** @var DocumentParser */
+    public $evo;
     public $data = [];
 
     public function __construct()

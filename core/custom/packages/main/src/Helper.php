@@ -26,6 +26,27 @@ class Helper
 
     /*
     |--------------------------------------------------------------------------
+    | Human-readable date ("30 червня 2026" / "30 June 2026") — a manual
+    | month-name lookup rather than PHP's locale-dependent strftime/IntlDateFormatter,
+    | so it doesn't depend on the server having the right locale installed.
+    |--------------------------------------------------------------------------
+    */
+    public static function formatDate(int $timestamp): string
+    {
+        $months = [
+            'uk' => ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'],
+            'en' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        ];
+
+        $locale = evo()->getLocale();
+        $monthNames = $months[$locale] ?? $months['en'];
+        $monthName = $monthNames[((int) date('n', $timestamp)) - 1];
+
+        return date('j', $timestamp) . ' ' . $monthName . ' ' . date('Y', $timestamp);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | Most-viewed published articles (falls back to newest when nothing has
     | been viewed yet, so the widget isn't empty on a fresh install)
     |--------------------------------------------------------------------------

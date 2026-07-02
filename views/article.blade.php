@@ -11,7 +11,7 @@
 				<p>{{ $content['description'] }}</p>
 			</div>
 			<div class="meta">
-				<time class="published">{{ date('d.m.Y', $content['createdon']) }}</time>
+				<time class="published">{{ \EvolutionCMS\Main\Helper::formatDate($content['createdon']) }}</time>
 			</div>
 		</header>
 		{!! $content['content'] !!}

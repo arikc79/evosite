@@ -10,7 +10,7 @@
 			'description' => $doc->description,
 			'introtext' => $doc->introtext,
 			'link' => $doc->fullLink,
-			'createdon' => date('d.m.Y', $doc->createdon_orig),
+			'createdon' => \EvolutionCMS\Main\Helper::formatDate($doc->createdon_orig),
 			'thumb' => \EvolutionCMS\Main\Helper::articleThumb($doc->id),
 		]])
 	@endforeach

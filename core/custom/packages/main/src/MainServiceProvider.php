@@ -1,6 +1,7 @@
 <?php namespace EvolutionCMS\Main;
 
 use EvolutionCMS\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class MainServiceProvider extends ServiceProvider
 {
@@ -34,5 +35,13 @@ class MainServiceProvider extends ServiceProvider
             'module from file',
             dirname(__DIR__).'/modules/module.php'
         );*/
+
+        // Blade templates skip the legacy tag parser (settings, links, chunks,
+        // snippets), so resolve those tags here for pages rendered via views/*.blade.php.
+        Event::listen('evolution.OnWebPagePrerender', function ($params) {
+            $params['documentOutput'] = evo()->parseDocumentSource($params['documentOutput']);
+            $params['documentOutput'] = evo()->cleanUpMODXTags($params['documentOutput']);
+            $params['documentOutput'] = evo()->rewriteUrls($params['documentOutput']);
+        });
     }
 }

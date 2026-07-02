@@ -4,9 +4,27 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Seiger\sCommerce\Facades\sCommerce;
+use Seiger\sGallery\Facades\sGallery;
 
 class Helper
 {
+    /*
+    |--------------------------------------------------------------------------
+    | First gallery image for a document, as an <img> tag (or '' if none)
+    |--------------------------------------------------------------------------
+    */
+    public static function articleThumb(int $documentId): string
+    {
+        $item = sGallery::collections()->documentId($documentId)->get()
+            ->first(fn ($item) => sGallery::hasImage($item->type));
+
+        if (!$item) {
+            return '';
+        }
+
+        return '<img src="' . htmlspecialchars($item->src) . '" alt="">';
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Breadcrumbs generator

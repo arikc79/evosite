@@ -14,7 +14,7 @@
 			'introtext' => $doc['introtext'],
 			'link' => evo()->makeUrl($doc['id']),
 			'createdon' => date('d.m.Y', $doc['createdon']),
-			'thumb' => '',
+			'thumb' => \EvolutionCMS\Main\Helper::articleThumb($doc['id']),
 		]])
 	@endforeach
 @endsection

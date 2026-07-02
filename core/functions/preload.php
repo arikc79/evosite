@@ -129,7 +129,7 @@ if (!function_exists('startCMSSession')) {
                 try {
                     $handler = new \suffi\RedisSessionHandler\RedisSessionHandler($redis);
                     session_set_save_handler($handler);
-                } catch (RedisException $exception) {
+                } catch (\RedisException $exception) {
 
                 } catch (\Exception $exception) {
 
@@ -174,11 +174,11 @@ if (!function_exists('startCMSSession')) {
 
 if (!function_exists('removeInvalidCmsSessionFromStorage')) {
     /**
-     * @param $storage
-     * @param $session_name
+     * @param array $storage
+     * @param string $session_name
      * @return void
      */
-    function removeInvalidCmsSessionFromStorage(&$storage, $session_name)
+    function removeInvalidCmsSessionFromStorage(array &$storage, string $session_name)
     {
         if (isset($storage[$session_name]) && ($storage[$session_name] === '' || $storage[$session_name] === 'deleted')) {
             unset($storage[$session_name]);
@@ -188,10 +188,10 @@ if (!function_exists('removeInvalidCmsSessionFromStorage')) {
 
 if (!function_exists('removeInvalidCmsSessionIds')) {
     /**
-     * @param $session_name
+     * @param string $session_name
      * @return void
      */
-    function removeInvalidCmsSessionIds($session_name)
+    function removeInvalidCmsSessionIds(string $session_name)
     {
         if (is_cli()) {
             return;

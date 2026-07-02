@@ -154,7 +154,7 @@ if (isset($action)) {
                                 $join->on('user_role_vars.roleid', '>', \DB::raw(0));
                             })
                             ->orderBy('site_tmplvars.name')
-                            ->groupBy(['site_tmplvars.id', 'site_tmplvars.name', 'site_tmplvars.locked', 'site_tmplvar_templates.tmplvarid']);
+                            ->groupBy(['site_tmplvars.id', 'site_tmplvars.name', 'site_tmplvars.locked', 'site_tmplvar_templates.tmplvarid', 'templateid', 'roleid']);
 
                         if ($filter != '') {
                             $sql = $sql->where('site_tmplvars.name', 'LIKE', '%' . $filter . '%');

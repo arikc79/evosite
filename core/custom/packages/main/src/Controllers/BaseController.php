@@ -39,6 +39,9 @@ class BaseController
     public function globalElements()
     {
         // Here Code that will be available globally to all child controllers
+        $this->data['content'] = $this->evo->documentObject['id']
+            ? $this->evo->makeDocumentObject($this->evo->documentObject['id'])
+            : [];
     }
 
     public function sendToView()

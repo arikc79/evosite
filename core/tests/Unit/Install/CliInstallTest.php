@@ -4,8 +4,6 @@ namespace Tests\Unit\Install;
 
 use Tests\TestCase;
 
-require_once dirname(__DIR__, 4) . '/install/cli-install.php';
-
 final class CliInstallTest extends TestCase
 {
     private string $configPath;
@@ -23,6 +21,12 @@ final class CliInstallTest extends TestCase
             $this->originalConfig = (string) file_get_contents($this->configPath);
             @chmod($this->configPath, 0600);
         }
+
+        $cliInstallPath = dirname(__DIR__, 4) . '/install/cli-install.php';
+        if (!file_exists($cliInstallPath)) {
+            $this->markTestSkipped('install/ is not part of this checkout (removed after installation).');
+        }
+        require_once $cliInstallPath;
     }
 
     protected function tearDown(): void

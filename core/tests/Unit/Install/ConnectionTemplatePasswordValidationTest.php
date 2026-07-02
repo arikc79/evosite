@@ -5,10 +5,19 @@ namespace Tests\Unit\Install;
 use InvalidArgumentException;
 use Tests\TestCase;
 
-require_once dirname(__DIR__, 4) . '/install/src/functions.php';
-
 final class ConnectionTemplatePasswordValidationTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $functionsPath = dirname(__DIR__, 4) . '/install/src/functions.php';
+        if (!file_exists($functionsPath)) {
+            $this->markTestSkipped('install/ is not part of this checkout (removed after installation).');
+        }
+        require_once $functionsPath;
+    }
+
     public function testShortAdminPasswordsUseDedicatedMinLengthMessage(): void
     {
         $template = (string) file_get_contents(dirname(__DIR__, 4) . '/install/src/template/actions/connection.tpl');

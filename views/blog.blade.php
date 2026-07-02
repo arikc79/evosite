@@ -3,6 +3,7 @@
 @section('bodyClass', 'is-preload')
 
 @section('content')
+	@include('partials.breadcrumbs')
 	@foreach($articles as $doc)
 		@include('partials.article-item', ['item' => [
 			'pagetitle' => $doc->pagetitle,

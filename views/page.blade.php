@@ -3,6 +3,7 @@
 @section('bodyClass', 'is-preload')
 
 @section('content')
+	@include('partials.breadcrumbs')
 	<article class="post">
 		<header>
 			<div class="title">

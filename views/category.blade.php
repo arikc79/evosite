@@ -3,6 +3,7 @@
 @section('bodyClass', 'is-preload')
 
 @section('content')
+	@include('partials.breadcrumbs')
 	<header>
 		<h2>{{ $content['pagetitle'] }}</h2>
 		<p>{{ $content['description'] }}</p>

@@ -1,10 +1,7 @@
 <?php namespace EvolutionCMS\Main;
 
 use EvolutionCMS\Models\SiteTemplate;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Seiger\sCommerce\Facades\sCommerce;
 use Seiger\sGallery\Facades\sGallery;
 use Seiger\sLang\Models\sLangContent;
 
@@ -54,35 +51,34 @@ class Helper
 
     /*
     |--------------------------------------------------------------------------
-    | Breadcrumbs generator
+    | Breadcrumbs generator — ancestor chain (Home first), NOT including the
+    | current document itself; the calling view renders the current page's
+    | own title as the final, non-linked crumb.
     |--------------------------------------------------------------------------
     */
     public static function breadcrumbs()
     {
-        $identifier = evo()->documentObject['type'] == 'product' ? evo()->documentObject['category'] : evo()->documentIdentifier;
-        $parentIds = array_reverse(evo()->getParentIds($identifier));
-
-        if (evo()->getConfig('site_root') && in_array(evo()->getConfig('site_root'), $parentIds)) {
-            $parentIds = array_diff($parentIds, [evo()->getConfig('site_root')]);
-        }
-
+        // evo()->getParentIds() returns [childId => parentId, ...] walking up
+        // from the current document to the root, so its values (not keys) are
+        // the ancestor chain, nearest-parent-first — reverse for Home-first order.
+        $parentIds = array_reverse(array_values(evo()->getParentIds(evo()->documentIdentifier)));
         array_unshift($parentIds, evo()->getConfig('site_start'));
+        $parentIds = array_values(array_unique($parentIds));
 
-        if (evo()->documentObject['type'] == 'product') {
-            array_push($parentIds, evo()->documentObject['category']);
+        if (empty($parentIds)) {
+            return sLangContent::whereRaw('1 = 0')->get();
         }
 
-        $breadcrumbs = SiteContent::select('*', 'site_content.id as key')->whereIn('site_content.id', $parentIds);
+        // orderByRaw() doesn't get the table prefix applied automatically,
+        // unlike where()/whereIn(), so it has to be added by hand here.
+        $prefixedTable = DB::getTablePrefix() . 'site_content';
 
-        if (evo()->getConfig('site_start', false)) {
-            $breadcrumbs->leftJoin('s_lang_content', 's_lang_content.resource', '=', 'site_content.id');
-            $breadcrumbs->where('s_lang_content.lang', evo()->getLocale());
-        }
-
-        $breadcrumbs->orderByRaw('FIELD(`key`, ' . implode(', ', $parentIds) . ')');
-        $breadcrumbs->where('site_content.hidemenu', 0);
-
-        return $breadcrumbs->active()->get();
+        return sLangContent::lang(evo()->getLocale())
+            ->active()
+            ->where('site_content.hidemenu', 0)
+            ->whereIn('site_content.id', $parentIds)
+            ->orderByRaw("FIELD({$prefixedTable}.id, " . implode(',', $parentIds) . ')')
+            ->get();
     }
     
     /*
@@ -90,7 +86,7 @@ class Helper
     | MultiFields Normalizer
     |--------------------------------------------------------------------------
     */
-    public static function multiFields($data)
+    public static function multiFields(array $data)
     {
         $newdata = [];
         if (is_array($data)) {
@@ -110,25 +106,5 @@ class Helper
             }
         }
         return $newdata;
-    }
-    
-    public function backcallExample()
-    {
-        $validator = Validator::make(request()->all(), [
-            'first_name' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-        ]);
-
-        if ($validator->fails()) {
-            die(json_encode(['errors' => $validator->errors()->messages()]));
-        }
-
-        sCommerce::notifyEmail(
-            explode(',', sCommerce::config('notifications.email_addresses', '')),
-            "notifications/email/adminCallback.blade.php",
-            $validator->validated()
-        );
-
-        die(json_encode(['success' => true]));
     }
 }

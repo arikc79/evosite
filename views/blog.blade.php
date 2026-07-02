@@ -14,8 +14,20 @@
 		]])
 	@endforeach
 	<ul class="actions pagination">
-		<li><a href="#" class="disabled button large previous">@lang('pagination_prev')</a></li>
-		<li><a href="#" class="button large next">@lang('pagination_next')</a></li>
+		<li>
+			@if ($articles->onFirstPage())
+				<a href="#" class="disabled button large previous">@lang('pagination_prev')</a>
+			@else
+				<a href="{{ $articles->previousPageUrl() }}" class="button large previous">@lang('pagination_prev')</a>
+			@endif
+		</li>
+		<li>
+			@if ($articles->hasMorePages())
+				<a href="{{ $articles->nextPageUrl() }}" class="button large next">@lang('pagination_next')</a>
+			@else
+				<a href="#" class="disabled button large next">@lang('pagination_next')</a>
+			@endif
+		</li>
 	</ul>
 @endsection
 

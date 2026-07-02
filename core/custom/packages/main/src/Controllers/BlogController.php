@@ -4,6 +4,8 @@ use Seiger\sLang\Models\sLangContent;
 
 class BlogController extends BaseController
 {
+    protected int $perPage = 2;
+
     public function render()
     {
         parent::render();
@@ -13,6 +15,6 @@ class BlogController extends BaseController
             ->addSelect('site_content.createdon as createdon_orig')
             ->where('site_content.parent', evo()->documentIdentifier)
             ->orderBy('site_content.menuindex')
-            ->get();
+            ->paginate($this->perPage);
     }
 }

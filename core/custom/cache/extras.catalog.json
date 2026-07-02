@@ -1,0 +1,571 @@
+{
+    "ok": true,
+    "type": "extras",
+    "generatedAt": "2026-05-28T14:39:37+00:00",
+    "sources": [
+        {
+            "url": "https://api.github.com/orgs/evolution-cms/repos",
+            "type": "orgs",
+            "filter": "^e[A-Z]",
+            "enabled": true
+        },
+        {
+            "url": "https://api.github.com/users/Dmi3yy/repos",
+            "type": "user",
+            "filter": "^d[A-Z]",
+            "enabled": true
+        },
+        {
+            "url": "https://api.github.com/users/Seiger/repos",
+            "type": "user",
+            "filter": "^s[A-Z]",
+            "enabled": true
+        },
+        {
+            "url": "https://api.github.com/orgs/evolution-cms-extras/repos",
+            "type": "org",
+            "filter": "",
+            "enabled": true
+        }
+    ],
+    "packages": [
+        {
+            "name": "eCodemirror",
+            "description": "Codemirror for Evolution CMS",
+            "full_name": "evolution-cms/eCodemirror",
+            "html_url": "https://github.com/evolution-cms/eCodemirror",
+            "default_branch": "main",
+            "tags": [],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "",
+            "defaultInstallMode": "default-branch",
+            "composer_name": "evolution-cms/ecodemirror",
+            "packagist_url": "https://packagist.org/packages/evolution-cms/ecodemirror",
+            "downloads": 47,
+            "downloads_monthly": 3,
+            "downloads_daily": 0,
+            "packagist_favers": 0
+        },
+        {
+            "name": "eFilemanager",
+            "description": "Laravel-filemanager for Evolution CMS",
+            "full_name": "evolution-cms/eFilemanager",
+            "html_url": "https://github.com/evolution-cms/eFilemanager",
+            "default_branch": "main",
+            "tags": [],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "",
+            "defaultInstallMode": "default-branch",
+            "composer_name": "evolution-cms/efilemanager",
+            "packagist_url": "https://packagist.org/packages/evolution-cms/efilemanager",
+            "downloads": 55,
+            "downloads_monthly": 8,
+            "downloads_daily": 0,
+            "packagist_favers": 1
+        },
+        {
+            "name": "ePasskeys",
+            "description": "Laravel passkeys for Evolution CMS",
+            "full_name": "evolution-cms/ePasskeys",
+            "html_url": "https://github.com/evolution-cms/ePasskeys",
+            "default_branch": "main",
+            "tags": [],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "",
+            "defaultInstallMode": "default-branch",
+            "composer_name": "evolution-cms/epasskeys",
+            "packagist_url": "https://packagist.org/packages/evolution-cms/epasskeys",
+            "downloads": 43,
+            "downloads_monthly": 8,
+            "downloads_daily": 0,
+            "packagist_favers": 0
+        },
+        {
+            "name": "eTinyMCE",
+            "description": "TinyMCE for Evolution CMS",
+            "full_name": "evolution-cms/eTinyMCE",
+            "html_url": "https://github.com/evolution-cms/eTinyMCE",
+            "default_branch": "main",
+            "tags": [
+                "8.3.2"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "8.3.2",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "evolution-cms/etinymce",
+            "packagist_url": "https://packagist.org/packages/evolution-cms/etinymce",
+            "downloads": 125,
+            "downloads_monthly": 15,
+            "downloads_daily": 0,
+            "packagist_favers": 1
+        },
+        {
+            "name": "dDocs",
+            "description": "Markdown-powered documentation hub for Evolution CMS",
+            "full_name": "Dmi3yy/dDocs",
+            "html_url": "https://github.com/Dmi3yy/dDocs",
+            "default_branch": "main",
+            "tags": [
+                "v1.0.0"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "v1.0.0",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "dmi3yy/ddocs",
+            "packagist_url": "https://packagist.org/packages/dmi3yy/ddocs",
+            "downloads": 5,
+            "downloads_monthly": 5,
+            "downloads_daily": 1,
+            "packagist_favers": 0
+        },
+        {
+            "name": "dTui-editor",
+            "description": "🍞📝 Markdown WYSIWYG Editor for Evolution CMS. GFM Standard + Chart & UML Extensible.",
+            "full_name": "Dmi3yy/dTui-editor",
+            "html_url": "https://github.com/Dmi3yy/dTui-editor",
+            "default_branch": "main",
+            "tags": [
+                "v1.0.2",
+                "v1.0.1",
+                "v1.0.0"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "v1.0.2",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "dmi3yy/dtui-editor",
+            "packagist_url": "https://packagist.org/packages/dmi3yy/dtui-editor",
+            "downloads": 15,
+            "downloads_monthly": 15,
+            "downloads_daily": 0,
+            "packagist_favers": 0
+        },
+        {
+            "name": "sApi",
+            "description": "Lightweight, framework-agnostic API toolkit for Evolution CMS with routing, auth, middleware, and versioned APIs.",
+            "full_name": "Seiger/sApi",
+            "html_url": "https://github.com/Seiger/sApi",
+            "default_branch": "main",
+            "tags": [
+                "v1.0.4",
+                "v1.0.3",
+                "v1.0.2",
+                "v1.0.1",
+                "v1.0.0"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "v1.0.4",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/sapi",
+            "packagist_url": "https://packagist.org/packages/seiger/sapi",
+            "downloads": 84,
+            "downloads_monthly": 22,
+            "downloads_daily": 1,
+            "packagist_favers": 1
+        },
+        {
+            "name": "sArticles",
+            "description": "Blog, news, and articles management module for the Evolution CMS admin panel.",
+            "full_name": "Seiger/sArticles",
+            "html_url": "https://github.com/Seiger/sArticles",
+            "default_branch": "2.x",
+            "tags": [
+                "v1.2.0",
+                "v1.1.5",
+                "v1.1.4",
+                "v1.1.3",
+                "v1.1.2",
+                "v1.1.1",
+                "1.1.0",
+                "1.0.1",
+                "1.0.0"
+            ],
+            "branches": [
+                "1.x",
+                "2.x",
+                "dev",
+                "main"
+            ],
+            "latest_release": "v1.2.0",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/sarticles",
+            "packagist_url": "https://packagist.org/packages/seiger/sarticles",
+            "downloads": 181,
+            "downloads_monthly": 35,
+            "downloads_daily": 1,
+            "packagist_favers": 4
+        },
+        {
+            "name": "sCommerce",
+            "description": "Comprehensive e-commerce tools suite that turns Evolution CMS into an online store platform.",
+            "full_name": "Seiger/sCommerce",
+            "html_url": "https://github.com/Seiger/sCommerce",
+            "default_branch": "master",
+            "tags": [
+                "v1.1.1",
+                "v1.1.0",
+                "v1.0.12",
+                "v1.0.11",
+                "v1.0.10",
+                "v1.0.9",
+                "v1.0.8",
+                "v1.0.7",
+                "v1.0.6",
+                "v1.0.5",
+                "v1.0.4",
+                "v1.0.3",
+                "v1.0.2",
+                "v1.0.1",
+                "v1.0.0"
+            ],
+            "branches": [
+                "master"
+            ],
+            "latest_release": "v1.1.1",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/scommerce",
+            "packagist_url": "https://packagist.org/packages/seiger/scommerce",
+            "downloads": 221,
+            "downloads_monthly": 14,
+            "downloads_daily": 1,
+            "packagist_favers": 7
+        },
+        {
+            "name": "sGallery",
+            "description": "Plugin for attaching images and YouTube videos to resources in the Evolution CMS admin panel.",
+            "full_name": "Seiger/sGallery",
+            "html_url": "https://github.com/Seiger/sGallery",
+            "default_branch": "main",
+            "tags": [
+                "v1.4.2",
+                "v1.4.1",
+                "v1.4.0",
+                "v1.3.7",
+                "v1.3.6",
+                "v1.3.5",
+                "v1.3.4",
+                "v1.3.3",
+                "v1.3.2",
+                "v1.3.1",
+                "v1.3.0",
+                "v1.2.2",
+                "v1.2.1",
+                "v1.2.0",
+                "v1.1.8",
+                "v1.1.7",
+                "v1.1.6",
+                "v1.1.5",
+                "v1.1.4",
+                "v1.1.3",
+                "v1.0.0"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "v1.4.2",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/sgallery",
+            "packagist_url": "https://packagist.org/packages/seiger/sgallery",
+            "downloads": 323,
+            "downloads_monthly": 17,
+            "downloads_daily": 1,
+            "packagist_favers": 10
+        },
+        {
+            "name": "sLang",
+            "description": "Multi-language management module for Evolution CMS based on Laravel localization features.",
+            "full_name": "Seiger/sLang",
+            "html_url": "https://github.com/Seiger/sLang",
+            "default_branch": "2.x",
+            "tags": [
+                "v1.0.14",
+                "v1.0.13",
+                "v1.0.12",
+                "v1.0.11",
+                "v1.0.10",
+                "v1.0.9",
+                "v1.0.8",
+                "v1.0.7",
+                "v1.0.6",
+                "v1.0.5",
+                "v1.0.4",
+                "v1.0.3",
+                "v1.0.2",
+                "v1.0.1",
+                "v1.0.0"
+            ],
+            "branches": [
+                "1.x",
+                "2.x",
+                "master"
+            ],
+            "latest_release": "v1.0.14",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/slang",
+            "packagist_url": "https://packagist.org/packages/seiger/slang",
+            "downloads": 341,
+            "downloads_monthly": 37,
+            "downloads_daily": 0,
+            "packagist_favers": 9
+        },
+        {
+            "name": "sMailer",
+            "description": "Email sending service for Evolution CMS with template and transport support.",
+            "full_name": "Seiger/sMailer",
+            "html_url": "https://github.com/Seiger/sMailer",
+            "default_branch": "main",
+            "tags": [],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "",
+            "defaultInstallMode": "default-branch",
+            "composer_name": "seiger/smailer",
+            "packagist_url": "https://packagist.org/packages/seiger/smailer",
+            "downloads": 30,
+            "downloads_monthly": 6,
+            "downloads_daily": 0,
+            "packagist_favers": 1
+        },
+        {
+            "name": "sMultisite",
+            "description": "Collection of tools for building and managing multisite setups in Evolution CMS.",
+            "full_name": "Seiger/sMultisite",
+            "html_url": "https://github.com/Seiger/sMultisite",
+            "default_branch": "master",
+            "tags": [
+                "v1.1.4",
+                "v1.1.3",
+                "v1.1.2",
+                "v1.1.1",
+                "v1.1.0",
+                "1.0.3",
+                "1.0.2",
+                "1.0.1",
+                "1.0.0"
+            ],
+            "branches": [
+                "master"
+            ],
+            "latest_release": "v1.1.4",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/smultisite",
+            "packagist_url": "https://packagist.org/packages/seiger/smultisite",
+            "downloads": 93,
+            "downloads_monthly": 3,
+            "downloads_daily": 0,
+            "packagist_favers": 4
+        },
+        {
+            "name": "sOffers",
+            "description": "Records and offers management module for the Evolution CMS admin panel.",
+            "full_name": "Seiger/sOffers",
+            "html_url": "https://github.com/Seiger/sOffers",
+            "default_branch": "master",
+            "tags": [
+                "v1.0.0"
+            ],
+            "branches": [
+                "master"
+            ],
+            "latest_release": "v1.0.0",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/soffers",
+            "packagist_url": "https://packagist.org/packages/seiger/soffers",
+            "downloads": 17,
+            "downloads_monthly": 1,
+            "downloads_daily": 0,
+            "packagist_favers": 3
+        },
+        {
+            "name": "sSeo",
+            "description": "SEO tools package for managing metadata and search optimization in Evolution CMS.",
+            "full_name": "Seiger/sSeo",
+            "html_url": "https://github.com/Seiger/sSeo",
+            "default_branch": "main",
+            "tags": [
+                "v1.2.7",
+                "v1.2.6",
+                "v1.2.5",
+                "v1.2.4",
+                "v1.2.3",
+                "v1.2.2",
+                "v1.2.1",
+                "v1.2.0",
+                "v1.1.1",
+                "v1.1.0",
+                "v1.0.6",
+                "v1.0.5",
+                "v1.0.4",
+                "v1.0.3",
+                "1.0.2",
+                "1.0.1",
+                "1.0.0"
+            ],
+            "branches": [
+                "2.x",
+                "main"
+            ],
+            "latest_release": "v1.2.7",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/sseo",
+            "packagist_url": "https://packagist.org/packages/seiger/sseo",
+            "downloads": 225,
+            "downloads_monthly": 31,
+            "downloads_daily": 3,
+            "packagist_favers": 8
+        },
+        {
+            "name": "sSettings",
+            "description": "Advanced settings management plugin for centralized configuration in Evolution CMS.",
+            "full_name": "Seiger/sSettings",
+            "html_url": "https://github.com/Seiger/sSettings",
+            "default_branch": "master",
+            "tags": [
+                "v1.0.7",
+                "v1.0.6",
+                "v1.0.5",
+                "v1.0.4",
+                "v1.0.3",
+                "v1.0.1",
+                "v1.0.0",
+                "1.0.2"
+            ],
+            "branches": [
+                "2.x",
+                "master"
+            ],
+            "latest_release": "v1.0.7",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/ssettings",
+            "packagist_url": "https://packagist.org/packages/seiger/ssettings",
+            "downloads": 198,
+            "downloads_monthly": 32,
+            "downloads_daily": 1,
+            "packagist_favers": 4
+        },
+        {
+            "name": "sTask",
+            "description": "Asynchronous task and background job management system for Evolution CMS.",
+            "full_name": "Seiger/sTask",
+            "html_url": "https://github.com/Seiger/sTask",
+            "default_branch": "main",
+            "tags": [
+                "v1.0.10",
+                "v1.0.9",
+                "v1.0.8",
+                "v1.0.7",
+                "v1.0.6",
+                "v1.0.5",
+                "v1.0.4",
+                "v1.0.3",
+                "v1.0.2",
+                "v1.0.1",
+                "v1.0.0"
+            ],
+            "branches": [
+                "main"
+            ],
+            "latest_release": "v1.0.10",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "seiger/stask",
+            "packagist_url": "https://packagist.org/packages/seiger/stask",
+            "downloads": 214,
+            "downloads_monthly": 31,
+            "downloads_daily": 1,
+            "packagist_favers": 3
+        },
+        {
+            "name": "evocms-resourceHistory",
+            "description": "",
+            "full_name": "evolution-cms-extras/evocms-resourceHistory",
+            "html_url": "https://github.com/evolution-cms-extras/evocms-resourceHistory",
+            "default_branch": "master",
+            "tags": [
+                "0.0.6",
+                "0.0.5",
+                "0.0.4",
+                "0.0.3",
+                "0.0.2",
+                "0.0.1"
+            ],
+            "branches": [
+                "master"
+            ],
+            "latest_release": "",
+            "defaultInstallMode": "default-branch",
+            "composer_name": "ddaproduction/evocms-resourcehistory",
+            "packagist_url": "https://packagist.org/packages/ddaproduction/evocms-resourcehistory",
+            "downloads": 76,
+            "downloads_monthly": 0,
+            "downloads_daily": 0,
+            "packagist_favers": 5
+        },
+        {
+            "name": "multifields",
+            "description": "[EVO] multiFields — custom TV",
+            "full_name": "evolution-cms-extras/multifields",
+            "html_url": "https://github.com/evolution-cms-extras/multifields",
+            "default_branch": "master",
+            "tags": [
+                "3.0.0",
+                "1.2.2",
+                "1.2.1",
+                "1.1.1"
+            ],
+            "branches": [
+                "1.1",
+                "1.2",
+                "1.3",
+                "2.x",
+                "master"
+            ],
+            "latest_release": "3.0.0",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "evolution-cms-extras/multifields",
+            "packagist_url": "https://packagist.org/packages/evolution-cms-extras/multifields",
+            "downloads": 91,
+            "downloads_monthly": 13,
+            "downloads_daily": 0,
+            "packagist_favers": 0
+        },
+        {
+            "name": "TinyMCE5",
+            "description": "TinyMCE5 for EvolutionCMS 3",
+            "full_name": "evolution-cms-extras/TinyMCE5",
+            "html_url": "https://github.com/evolution-cms-extras/TinyMCE5",
+            "default_branch": "master",
+            "tags": [
+                "5.7.1",
+                "5.7.0",
+                "5.6.1.2",
+                "5.6.1.1",
+                "5.6.1"
+            ],
+            "branches": [
+                "master"
+            ],
+            "latest_release": "5.7.1",
+            "defaultInstallMode": "latest-release",
+            "composer_name": "evolution-cms-extras/tinymce5",
+            "packagist_url": "https://packagist.org/packages/evolution-cms-extras/tinymce5",
+            "downloads": 1842,
+            "downloads_monthly": 92,
+            "downloads_daily": 3,
+            "packagist_favers": 1
+        }
+    ]
+}

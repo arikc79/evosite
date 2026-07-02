@@ -1,0 +1,52 @@
+{
+  "name": "evolution-cms/evolution",
+  "description": "Evolution CMS is a Content Management System, ex MODX Evolution",
+  "type": "project",
+  "keywords": [
+    "content",
+    "CMS",
+    "routing",
+    "templating"
+  ],
+  "homepage": "https://evo.im/",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Dmytro Lukianenko",
+      "email": "dmi3yy@gmail.com",
+      "homepage": "https://dmi3yy.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Serhii Korneliuk",
+      "email": "info@seigerit.com",
+      "homepage": "https://seigerit.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "docs": "https://docs.evo.im",
+    "email": "dmi3yy@evo.im",
+    "telegram": "https://t.me/evolutioncms",
+    "issues": "https://github.com/evolution-cms/evolution/issues/",
+    "source": "https://github.com/evolution-cms/evolution/"
+  },
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "require": {
+    "php": "^8.3",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-readline": "*",
+    "ext-zip": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "phpstan/phpstan": "^2.1"
+  },
+  "scripts": {
+    "analyze": "@php -d xdebug.mode=off vendor/bin/phpstan --memory-limit=512M"
+  }
+}

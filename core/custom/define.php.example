@@ -1,0 +1,21 @@
+<?php
+/**
+ * Define constants:
+ *  - evolution cms
+ *      - HTTPS_PORT
+ *      - SESSION_COOKIE_PATH
+ *      - SESSION_COOKIE_DOMAIN
+ *      - SESSION_COOKIE_NAME
+ *      - EVO_CLASS
+ *      - EVO_CORE_PATH
+ *      - EVO_SITE_HOSTNAMES
+ *      - MGR_DIR
+ *      - EVO_BASE_PATH
+ *      - EVO_BASE_URL
+ *      - EVO_MANAGER_PATH
+ *      - EVO_SITE_URL
+ *      - EVO_MANAGER_URL
+ *      - EVO_SANITIZE_SEED
+ *      - NO_SESSION
+ *  - custom
+ */

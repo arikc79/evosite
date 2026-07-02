@@ -1,0 +1,96 @@
+#hero-slider {
+	position: relative;
+	width: 100%;
+	height: 22rem;
+	overflow: hidden;
+	margin-bottom: 2rem;
+	cursor: grab;
+	user-select: none;
+	touch-action: pan-y;
+}
+
+#hero-slider.dragging {
+	cursor: grabbing;
+}
+
+#hero-slider .slides-track {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	will-change: transform;
+}
+
+#hero-slider .slides-track.transition {
+	transition: transform 0.4s ease;
+}
+
+#hero-slider .slide {
+	position: relative;
+	flex: 0 0 100%;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+}
+
+#hero-slider .slide .caption {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 1.25rem 1.5rem;
+	background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+	color: #fff;
+}
+
+#hero-slider .slide .caption h3 {
+	margin: 0;
+	color: #fff;
+}
+
+#hero-slider .dots {
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 2;
+}
+
+#hero-slider .dots span {
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	margin-left: 0.4rem;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.5);
+	cursor: pointer;
+}
+
+#hero-slider .dots span.active {
+	background: #fff;
+}
+
+.lang-switcher {
+	display: flex;
+	gap: 0.5rem;
+	list-style: none;
+	margin: 0 0 0 1rem;
+	padding: 0;
+}
+
+.lang-switcher li a {
+	display: inline-block;
+	padding: 0.2rem 0.5rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	color: inherit;
+	text-decoration: none;
+}
+
+.lang-switcher li.active a {
+	background: #000;
+	color: #fff;
+	border-color: #000;
+}

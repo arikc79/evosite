@@ -1,0 +1,27 @@
+# Local environment config (site-specific, never committed)
+/config.php
+/core/custom/.env
+/core/custom/config/database/connections/*.php
+!/core/custom/config/database/connections/*.php.example
+/core/custom/composer.lock
+
+# Dependencies
+/vendor/
+/core/vendor/
+/node_modules/
+
+# Runtime / generated
+/core/.install
+/install.session.php
+/core/storage/blade/*
+/core/storage/bootstrap/*
+!/core/storage/bootstrap/.htaccess
+/core/storage/cache/*
+/core/storage/logs/*
+/core/storage/sessions/*
+/assets/cache/*
+!/assets/cache/.htaccess
+/assets/.thumbs/
+
+# IDE
+/.idea/

@@ -1,0 +1,13 @@
+{
+    "name": "evolutioncms/custom",
+    "require": {
+        "evolution-cms-extras/tinymce5": "dev-master",
+        "seiger/slang": "dev-master",
+        "seiger/sgallery": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "EvolutionCMS\\Main\\": "packages/main/src/"
+        }
+    }
+}

@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="[(site_url)]assets/site/assets/css/main.css" />
 	<link rel="stylesheet" href="[(site_url)]assets/site/assets/css/slider.css" />
+	<link rel="stylesheet" href="[(site_url)]assets/site/assets/css/custom.css" />
 </head>
 <body class="@yield('bodyClass', 'is-preload')">
 	<div id="wrapper">

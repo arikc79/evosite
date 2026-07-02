@@ -1,0 +1,64 @@
+/*
+	Custom additions on top of Future Imperfect (html5up.net)
+	Popular articles widget + breadcrumbs
+*/
+
+/* Popular articles */
+
+	.popular-articles {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.popular-articles li {
+		margin: 0 0 1.5em 0;
+		padding: 0 0 1.5em 0;
+		border-bottom: solid 1px rgba(160, 160, 160, 0.3);
+	}
+
+	.popular-articles li:last-child {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+
+	.popular-articles img {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin-bottom: 0.75em;
+	}
+
+	/* Hover color already comes from the theme's global `a` rule. */
+	.popular-articles a {
+		font-family: "Raleway", Helvetica, sans-serif;
+		font-weight: 700;
+		color: #3c3b3b;
+	}
+
+	.popular-articles__hits {
+		display: block;
+		margin-top: 0.35em;
+		font-size: 0.8em;
+		color: #a8431f;
+	}
+
+/* Breadcrumbs */
+
+	/* Link color/hover already comes from the theme's global `a` rule. */
+	.breadcrumbs {
+		margin: 0 0 2em 0;
+		font-size: 0.8em;
+		color: #646464;
+	}
+
+	.breadcrumbs__sep {
+		margin: 0 0.5em;
+		color: #aaaaaa;
+	}
+
+	.breadcrumbs__current {
+		color: #3c3b3b;
+		font-weight: 700;
+	}

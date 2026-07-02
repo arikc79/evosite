@@ -7,11 +7,4 @@
 		@endforeach
 		<span class="breadcrumbs__current">{{ $content['pagetitle'] }}</span>
 	</nav>
-	<style>
-		.breadcrumbs { margin-bottom: 1.5em; font-size: 0.85em; opacity: 0.75; }
-		.breadcrumbs a { text-decoration: none; }
-		.breadcrumbs a:hover { text-decoration: underline; }
-		.breadcrumbs__sep { margin: 0 0.4em; }
-		.breadcrumbs__current { font-weight: 600; }
-	</style>
 @endif

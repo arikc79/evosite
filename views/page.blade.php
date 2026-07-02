@@ -14,5 +14,8 @@
 @endsection
 
 @section('aside')
+	@isset($popularArticles)
+		@include('partials.popular-articles')
+	@endisset
 	@include('partials.footer')
 @endsection

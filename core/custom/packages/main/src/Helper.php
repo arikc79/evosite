@@ -1,10 +1,12 @@
 <?php namespace EvolutionCMS\Main;
 
+use EvolutionCMS\Models\SiteTemplate;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Seiger\sCommerce\Facades\sCommerce;
 use Seiger\sGallery\Facades\sGallery;
+use Seiger\sLang\Models\sLangContent;
 
 class Helper
 {
@@ -23,6 +25,31 @@ class Helper
         }
 
         return '<img src="' . htmlspecialchars($item->src) . '" alt="" style="max-width:400px;height:auto;">';
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Most-viewed published articles (falls back to newest when nothing has
+    | been viewed yet, so the widget isn't empty on a fresh install)
+    |--------------------------------------------------------------------------
+    */
+    public static function popularArticles(int $limit = 3)
+    {
+        $articleTemplateId = SiteTemplate::where('templatealias', 'article')->value('id');
+
+        $query = sLangContent::lang(evo()->getLocale())
+            ->active()
+            ->addSelect('site_content.hits as hits', 'site_content.createdon as createdon_orig');
+
+        if ($articleTemplateId) {
+            $query->where('site_content.template', $articleTemplateId);
+        }
+
+        $hasViews = (clone $query)->where('site_content.hits', '>', 0)->exists();
+
+        return $hasViews
+            ? $query->orderByDesc('site_content.hits')->limit($limit)->get()
+            : $query->orderByDesc('site_content.createdon')->limit($limit)->get();
     }
 
     /*

@@ -22,7 +22,7 @@ class Helper
             return '';
         }
 
-        return '<img src="' . htmlspecialchars($item->src) . '" alt="">';
+        return '<img src="' . htmlspecialchars($item->src) . '" alt="" style="max-width:400px;height:auto;">';
     }
 
     /*

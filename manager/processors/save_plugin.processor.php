@@ -36,14 +36,14 @@ if (isset($_GET['disabled'])) {
     exit;
 }
 
-$id = (int)$_POST['id'];
-$name = trim($_POST['name']);
-$description = $_POST['description'];
+$id = (int)($_POST['id'] ?? 0);
+$name = trim($_POST['name'] ?? '');
+$description = $_POST['description'] ?? '';
 $locked = isset($_POST['locked']) && $_POST['locked'] == 'on' ? '1' : '0';
-$plugincode = $_POST['post'];
-$properties = $_POST['properties'];
+$plugincode = $_POST['post'] ?? '';
+$properties = $_POST['properties'] ?? '';
 $disabled = isset($_POST['disabled']) && $_POST['disabled'] == 'on' ? '1' : '0';
-$moduleguid = $_POST['moduleguid'];
+$moduleguid = $_POST['moduleguid'] ?? '';
 $sysevents = !empty($_POST['sysevents']) ? $_POST['sysevents'] : [];
 $parse_docblock = isset($_POST['parse_docblock']) && $_POST['parse_docblock'] == '1' ? '1' : '0';
 $currentdate = time() + $modx->config['server_offset_time'];

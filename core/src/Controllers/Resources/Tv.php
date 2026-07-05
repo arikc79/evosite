@@ -6,7 +6,6 @@ use EvolutionCMS\Interfaces\ManagerTheme\TabControllerInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent;
 
-//'actions'=>array('edit'=>array(301,'edit_template'), 'duplicate'=>array(304,'edit_template'), 'remove'=>array(303,'edit_template')),
 class Tv extends AbstractResources implements TabControllerInterface
 {
     protected $view = 'page.resources.tv';

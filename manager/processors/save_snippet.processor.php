@@ -36,10 +36,10 @@ if (isset($_GET['disabled'])) {
     exit;
 }
 
-$id = (int)$_POST['id'];
-$snippet = trim($_POST['post']);
-$name = trim($_POST['name']);
-$description = $_POST['description'];
+$id = (int)($_POST['id'] ?? 0);
+$snippet = trim($_POST['post'] ?? '');
+$name = trim($_POST['name'] ?? '');
+$description = $_POST['description'] ?? '';
 $locked = isset($_POST['locked']) && $_POST['locked'] == 'on' ? 1 : 0;
 $disabled = isset($_POST['disabled']) && $_POST['disabled'] == "on" ? '1' : '0';
 $createdon = $editedon = time() + $modx->config['server_offset_time'];

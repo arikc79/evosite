@@ -6,7 +6,6 @@ use EvolutionCMS\Interfaces\ManagerTheme\TabControllerInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent;
 
-//'actions'=>array('edit'=>array(78,'edit_chunk'), 'duplicate'=>array(97,'new_chunk'), 'remove'=>array(80,'delete_chunk')),
 class Chunks extends AbstractResources implements TabControllerInterface
 {
     protected $view = 'page.resources.chunks';

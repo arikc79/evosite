@@ -36,18 +36,18 @@ if (isset($_GET['disabled'])) {
     exit;
 }
 
-$id = (int)$_POST['id'];
-$snippet = $_POST['post'];
-$name = trim($_POST['name']);
-$description = $_POST['description'];
+$id = (int)($_POST['id'] ?? 0);
+$snippet = $_POST['post'] ?? '';
+$name = trim($_POST['name'] ?? '');
+$description = $_POST['description'] ?? '';
 $locked = isset($_POST['locked']) && $_POST['locked'] == 'on' ? 1 : 0;
 $disabled = isset($_POST['disabled']) && $_POST['disabled'] == "on" ? '1' : '0';
 $createdon = $editedon = time() + evo()->config['server_offset_time'];
 
 //Kyle Jaebker - added category support
-if (empty($_POST['newcategory']) && $_POST['categoryid'] > 0) {
+if (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) > 0) {
     $category = (int)$_POST['categoryid'];
-} elseif (empty($_POST['newcategory']) && $_POST['categoryid'] <= 0) {
+} elseif (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) <= 0) {
     $category = 0;
 } else {
     include_once(EVO_MANAGER_PATH . 'includes/categories.inc.php');

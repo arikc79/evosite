@@ -1,7 +1,7 @@
 <?php namespace EvolutionCMS\Traits\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes as BaseSoftDeletes;
-use EvolutionCMS\Shit\SoftDeletingScope;
+use EvolutionCMS\Overrides\SoftDeletingScope;
 
 trait SoftDeletes{
     use BaseSoftDeletes {

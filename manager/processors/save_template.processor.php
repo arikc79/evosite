@@ -6,20 +6,20 @@ if (!EvolutionCMS()->hasPermission('save_template')) {
     EvolutionCMS()->webAlertAndQuit($_lang["error_no_privileges"]);
 }
 
-$id = (int)$_POST['id'];
-$template = $_POST['post'];
-$templatename = trim($_POST['templatename']);
-$templatealias = trim($_POST['templatealias']);
-$description = $_POST['description'];
+$id = (int)($_POST['id'] ?? 0);
+$template = $_POST['post'] ?? '';
+$templatename = trim($_POST['templatename'] ?? '');
+$templatealias = trim($_POST['templatealias'] ?? '');
+$description = $_POST['description'] ?? '';
 $locked = isset($_POST['locked']) && $_POST['locked'] == 'on' ? 1 : 0;
 $selectable = $id == EvolutionCMS()->config['default_template'] ? 1 :    // Force selectable
     (isset($_POST['selectable']) && $_POST['selectable'] == 'on' ? 1 : 0);
 $currentdate = time() + EvolutionCMS()->config['server_offset_time'];
 
 //Kyle Jaebker - added category support
-if (empty($_POST['newcategory']) && $_POST['categoryid'] > 0) {
+if (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) > 0) {
     $categoryid = (int)$_POST['categoryid'];
-} elseif (empty($_POST['newcategory']) && $_POST['categoryid'] <= 0) {
+} elseif (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) <= 0) {
     $categoryid = 0;
 } else {
     include_once(EVO_MANAGER_PATH . 'includes/categories.inc.php');

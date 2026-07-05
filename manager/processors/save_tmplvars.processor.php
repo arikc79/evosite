@@ -6,26 +6,26 @@ if (!$modx->hasPermission('save_template')) {
     $modx->webAlertAndQuit($_lang["error_no_privileges"]);
 }
 
-$id = (int)$_POST['id'];
-$name = trim($_POST['name']);
-$description = $_POST['description'];
-$caption = $_POST['caption'];
-$type = $_POST['type'];
-$elements = $_POST['elements'];
-$default_text = $_POST['default_text'];
-$rank = isset ($_POST['rank']) ? $_POST['rank'] : 0;
-$display = $_POST['display'];
-$params = $_POST['params'];
+$id = (int)($_POST['id'] ?? 0);
+$name = trim($_POST['name'] ?? '');
+$description = $_POST['description'] ?? '';
+$caption = $_POST['caption'] ?? '';
+$type = $_POST['type'] ?? '';
+$elements = $_POST['elements'] ?? '';
+$default_text = $_POST['default_text'] ?? '';
+$rank = isset ($_POST['rank']) ? (int)$_POST['rank'] : 0;
+$display = $_POST['display'] ?? '';
+$params = $_POST['params'] ?? '';
 $locked = isset($_POST['locked']) && $_POST['locked'] == 'on' ? 1 : 0;
 $origin = isset($_REQUEST['or']) ? (int)$_REQUEST['or'] : 76;
 $originId = isset($_REQUEST['oid']) ? (int)$_REQUEST['oid'] : null;
 $currentdate = time() + $modx->config['server_offset_time'];
-$properties = $_POST['properties'];
+$properties = $_POST['properties'] ?? '';
 
 //Kyle Jaebker - added category support
-if (empty($_POST['newcategory']) && $_POST['categoryid'] > 0) {
+if (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) > 0) {
     $categoryid = (int)$_POST['categoryid'];
-} elseif (empty($_POST['newcategory']) && $_POST['categoryid'] <= 0) {
+} elseif (empty($_POST['newcategory']) && (int)($_POST['categoryid'] ?? 0) <= 0) {
     $categoryid = 0;
 } else {
     include_once(EVO_MANAGER_PATH . 'includes/categories.inc.php');

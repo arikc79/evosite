@@ -187,30 +187,27 @@ if (!function_exists('updateNewHash')) {
 
 if (!function_exists('saveUserGroupAccessPermissons')) {
     /**
-     * saves module user group access
+     * Saves module user group access permissions
+     *
+     * @param int $moduleId The module ID to save permissions for
+     * @param bool $enableUpdate Whether to update permissions (use_udperms config)
+     * @return void
      */
-    function saveUserGroupAccessPermissons()
+    function saveUserGroupAccessPermissons($moduleId, $enableUpdate = true)
     {
-        global $id, $newid;
-        global $use_udperms;
-
-        if ($newid) {
-            $id = $newid;
-        }
         $usrgroups = get_by_key($_POST, 'usrgroups', []);
 
         // check for permission update access
-        if ($use_udperms == 1) {
+        if ($enableUpdate == 1) {
             // delete old permissions on the module
-            \EvolutionCMS\Models\SiteModuleAccess::where('module', $id)->delete();
+            \EvolutionCMS\Models\SiteModuleAccess::where('module', $moduleId)->delete();
 
             if (is_array($usrgroups)) {
                 foreach ($usrgroups as $value) {
                     \EvolutionCMS\Models\SiteModuleAccess::create([
-                        'module' => (int)$id,
+                        'module' => (int)$moduleId,
                         'usergroup' => stripslashes($value),
                     ]);
-
                 }
             }
         }
@@ -267,7 +264,7 @@ if (!function_exists('saveEventListeners')) {
 if (!function_exists('getEventIdByName')) {
     /**
      * @param string $name
-     * @return string|int
+     * @return string|int|null
      */
     function getEventIdByName($name)
     {
@@ -278,7 +275,7 @@ if (!function_exists('getEventIdByName')) {
         }
         $eventIds = \EvolutionCMS\Models\SystemEventname::query()->pluck('id', 'name')->toArray();
 
-        return $eventIds[$name];
+        return $eventIds[$name] ?? null;
     }
 }
 
@@ -288,8 +285,8 @@ if (!function_exists('saveTemplateAccess')) {
      */
     function saveTemplateAccess($id)
     {
-        if ($_POST['tvsDirty'] == 1) {
-            $newAssignedTvs = isset($_POST['assignedTv']) ? $_POST['assignedTv'] : '';
+        if ((int)($_POST['tvsDirty'] ?? 0) == 1) {
+            $newAssignedTvs = isset($_POST['assignedTv']) ? $_POST['assignedTv'] : [];
 
             // Preserve rankings of already assigned TVs
             $templates = SiteTmplvarTemplate::query()->where('templateid', $id)->get();
@@ -329,9 +326,6 @@ if (!function_exists('saveTemplateVarAccess')) {
         $siteTmlvarTemplates = EvolutionCMS\Models\SiteTmplvarTemplate::where('tmplvarid', '=', $id)->get();
 
         $getRankArray = $siteTmlvarTemplates->pluck('rank', 'templateid')->toArray();
-        /*foreach ($siteTmlvarTemplates as $siteTmlvarTemplate) {
-            $getRankArray[$siteTmlvarTemplate->templateid] = $siteTmlvarTemplate->rank;
-        }*/
 
         EvolutionCMS\Models\SiteTmplvarTemplate::where('tmplvarid', '=', $id)->delete();
         if (!$templates) {
@@ -380,7 +374,7 @@ if (!function_exists('saveDocumentAccessPermissons')) {
     {
         $modx = evo();
 
-        $docgroups = isset($_POST['docgroups']) ? $_POST['docgroups'] : '';
+        $docgroups = isset($_POST['docgroups']) ? $_POST['docgroups'] : [];
 
         // check for permission update access
         if ($modx->getConfig('use_udperms') != 1) {
@@ -402,17 +396,28 @@ if (!function_exists('sendMailMessageForUser')) {
     /**
      * Send an email to the user
      *
-     * @param string $email
-     * @param string $uid
-     * @param string $pwd
-     * @param string $ufn
+     * @param string $email User email address
+     * @param string $uid Username/user ID
+     * @param string $pwd Password to send
+     * @param string $ufn User full name
+     * @param string $message Email template message
+     * @param string $url Site URL for links
+     * @param array $config Optional configuration override (from, subject, lang)
+     * @return bool True if sent successfully
      */
-    function sendMailMessageForUser($email, $uid, $pwd, $ufn, $message, $url)
+    function sendMailMessageForUser($email, $uid, $pwd, $ufn, $message, $url, $config = [])
     {
         $modx = evo();
-        global $_lang;
-        global $emailsubject, $emailsender;
-        $message = sprintf($message, $uid, $pwd); // use old method
+        
+        // Get configuration with defaults
+        $emailSender = $config['from'] ?? '';
+        $emailSubject = $config['subject'] ?? 'User Account';
+        $lang = $config['lang'] ?? [];
+        
+        // Format message with credentials
+        $message = sprintf($message, $uid, $pwd);
+        
+        // Get user attributes
         $last_name = '';
         $first_name = '';
         $middle_name = '';
@@ -422,24 +427,45 @@ if (!function_exists('sendMailMessageForUser')) {
             $first_name = $user->first_name;
             $middle_name = $user->middle_name;
         }
-        // replace placeholders
+        
+        // Replace placeholder variables
         $message = str_replace(
-            ['[+uid+]', '[+pwd+]', '[+ufn+]', '[+sname+]', '[+saddr+]', '[+semail+]', '[+surl+]', '[+u_first_name+]', '[+u_last_name+]', '[+u_middle_name+]']
-            , [$uid, $pwd, $ufn, $modx->getPhpCompat()->entities($modx->getConfig('site_name')), $emailsender, $emailsender, $url, $first_name, $last_name, $middle_name]
-            , $message
+            [
+                '[+uid+]', '[+pwd+]', '[+ufn+]', 
+                '[+sname+]', '[+saddr+]', '[+semail+]', '[+surl+]',
+                '[+u_first_name+]', '[+u_last_name+]', '[+u_middle_name+]'
+            ],
+            [
+                $uid, $pwd, $ufn,
+                $modx->getPhpCompat()->entities($modx->getConfig('site_name')),
+                $emailSender,
+                $emailSender,
+                $url,
+                $first_name, $last_name, $middle_name
+            ],
+            $message
         );
 
+        // Prepare email parameters
         $param = [];
-        $param['from'] = $modx->getConfig('site_name') . '<' . $emailsender . '>';
-        $param['subject'] = $emailsubject;
+        $param['from'] = $modx->getConfig('site_name') . ' <' . $emailSender . '>';
+        $param['subject'] = $emailSubject;
         $param['body'] = $message;
         $param['to'] = $email;
         $param['type'] = 'text';
+        
+        // Send email
         if ($modx->sendmail($param)) {
-            return;
+            return true;
         }
+        
+        // Email failed - save form and display error
         $modx->getManagerApi()->saveFormValues();
-        $modx->messageQuit($email . ' - ' . $_lang['error_sending_email']);
+        $errorMsg = isset($lang['error_sending_email']) 
+            ? $email . ' - ' . $lang['error_sending_email']
+            : $email . ' - Error sending email';
+        $modx->messageQuit($errorMsg);
+        return false;
     }
 }
 

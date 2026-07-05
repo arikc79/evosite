@@ -6,7 +6,6 @@ use EvolutionCMS\Interfaces\ManagerTheme\TabControllerInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent;
 
-//'actions'=>array('edit'=>array(22,'edit_snippet'), 'duplicate'=>array(98,'new_snippet'), 'remove'=>array(25,'delete_snippet')),
 class Snippets extends AbstractResources implements TabControllerInterface
 {
     protected $view = 'page.resources.snippets';

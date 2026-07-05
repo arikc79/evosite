@@ -65,7 +65,6 @@ class EditOrNewUser extends AbstractController implements ManagerTheme\PageContr
             foreach ($exception->getValidationErrors() as $errors) {
                 foreach ($errors as $error) {
                     webAlertAndQuit($error, $userData['mode'], $id);
-                    exit();
                 }
             }
             exit();
@@ -163,8 +162,20 @@ class EditOrNewUser extends AbstractController implements ManagerTheme\PageContr
         if ($userData['passwordnotifymethod'] == 'e') {
             $websignupemail_message = EvolutionCMS()->getConfig('websignupemail_message');
             $site_url = EvolutionCMS()->getConfig('site_url');
-            sendMailMessageForUser($user->attributes->email, $user->username, $userData['password'], $user->attributes->fullname, $websignupemail_message, $site_url);
-
+            $emailConfig = [
+                'from' => EvolutionCMS()->getConfig('site_name'),
+                'subject' => 'User Account Created',
+                'lang' => $_lang ?? []
+            ];
+            sendMailMessageForUser(
+                $user->attributes->email, 
+                $user->username, 
+                $userData['password'], 
+                $user->attributes->fullname, 
+                $websignupemail_message, 
+                $site_url,
+                $emailConfig
+            );
         }
         if ($userData['passwordnotifymethod'] == 's' && $userData['newpassword'] == 1) {
             $this->parameters['username'] = $user->username;

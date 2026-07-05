@@ -1,4 +1,4 @@
-<?php namespace EvolutionCMS\Shit;
+<?php namespace EvolutionCMS\Overrides;
 
 use Illuminate\Database\Eloquent;
 

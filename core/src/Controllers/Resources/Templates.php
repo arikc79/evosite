@@ -6,7 +6,6 @@ use EvolutionCMS\Interfaces\ManagerTheme\TabControllerInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent;
 
-//'actions'=>array( 'edit'=>array(16,'edit_template'), 'duplicate'=>array(96,'new_template'), 'remove'=>array(21,'delete_template') ),
 class Templates extends AbstractResources implements TabControllerInterface
 {
     protected $view = 'page.resources.templates';

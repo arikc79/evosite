@@ -1,5 +1,8 @@
 <?php namespace EvolutionCMS\Traits\Models;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ */
 trait ManagerActions
 {
     public function getManagerActionsMap() : array

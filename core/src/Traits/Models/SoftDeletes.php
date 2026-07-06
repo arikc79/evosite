@@ -3,6 +3,10 @@
 use Illuminate\Database\Eloquent\SoftDeletes as BaseSoftDeletes;
 use EvolutionCMS\Overrides\SoftDeletingScope;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ * @method static void addGlobalScope(\Illuminate\Database\Eloquent\Scope|\Closure|string $scope, \Closure|null $implementation = null)
+ */
 trait SoftDeletes{
     use BaseSoftDeletes {
         bootSoftDeletes as baseBootSoftDeletes;

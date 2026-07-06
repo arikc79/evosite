@@ -1,4 +1,6 @@
 <?php
+/** @var array $_lang */
+/** @var \EvolutionCMS\Core $modx */
 
 use EvolutionCMS\Models\SiteModule;
 

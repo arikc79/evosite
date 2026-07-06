@@ -1,4 +1,6 @@
 <?php
+/** @var array $_lang */
+/** @var \EvolutionCMS\Core $modx */
 global $id, $newid;
 global $use_udperms;
 if( ! defined('IN_MANAGER_MODE') || IN_MANAGER_MODE !== true) {

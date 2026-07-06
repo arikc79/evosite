@@ -1,4 +1,5 @@
 <?php
+/** @var array $_lang */
 if( ! defined('IN_MANAGER_MODE') || IN_MANAGER_MODE !== true) {
     die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please use the EVO Content Manager instead of accessing this file directly.");
 }
@@ -33,6 +34,10 @@ if ($templatename == "") {
     $templatename = "Untitled template";
 }
 
+/**
+ * @param string $templatealias
+ * @return void
+ */
 function createBladeFile($templatealias)
 {
     $filename = $templatealias;
@@ -79,7 +84,7 @@ switch ($_POST['mode']) {
 
         if ($count > 0) {
             EvolutionCMS()->getManagerApi()->saveFormValues(19);
-            EvolutionCMS()->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "index.php?a=19");
+            EvolutionCMS()->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $templatename, $templatealias), "index.php?a=19");
         }
         //do stuff to save the new doc
         $newid = \EvolutionCMS\Models\SiteTemplate::query()->insertGetId([
@@ -146,7 +151,7 @@ switch ($_POST['mode']) {
 
         if ($count > 0) {
             EvolutionCMS()->getManagerApi()->saveFormValues(16);
-            EvolutionCMS()->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $docid, $templatealias), "index.php?a=16&id={$id}");
+            EvolutionCMS()->webAlertAndQuit(sprintf($_lang["duplicate_template_alias_found"], $templatename, $templatealias), "index.php?a=16&id={$id}");
         }
         //do stuff to save the edited doc
         \EvolutionCMS\Models\SiteTemplate::find($id)->update([

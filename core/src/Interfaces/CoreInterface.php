@@ -45,4 +45,18 @@ interface CoreInterface extends ApplicationContract
      * @return mixed
      */
     public function getConfig($name = '', $default = null);
+
+    /**
+     * @param string $pm
+     * @param string $context
+     * @return bool
+     */
+    public function hasPermission($pm, $context = '');
+
+    /**
+     * @param array $permissions
+     * @param string $context
+     * @return bool
+     */
+    public function hasAnyPermissions(array $permissions, $context = '');
 }

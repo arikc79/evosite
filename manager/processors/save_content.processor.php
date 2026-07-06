@@ -1,4 +1,5 @@
 <?php
+/** @var array $_lang */
 if(!defined('IN_MANAGER_MODE') || IN_MANAGER_MODE !== true) {
     die("<b>INCLUDE_ORDERING_ERROR</b><br /><br />Please use the EVO Content Manager instead of accessing this file directly.");
 }
@@ -483,6 +484,7 @@ switch ($actionToTake) {
         evo()->sendRedirect($redirectUrl, 0, headers_sent() ? 'REDIRECT_SCRIPT' : '');
         break;
     case 'edit' :
+        /** @var array $existingDocument set above when $actionToTake != "new", which is exactly when we reach this case */
         // get the document's current parent
         $oldparent = $existingDocument['parent'];
         $doctype = $existingDocument['type'];

@@ -216,6 +216,12 @@ if (!function_exists('saveUserGroupAccessPermissons')) {
 
 if (!function_exists('saveEventListeners')) {
 # Save Plugin Event Listeners
+    /**
+     * @param int $id
+     * @param array $sysevents
+     * @param string $mode
+     * @return void
+     */
     function saveEventListeners($id, $sysevents, $mode)
     {
         // save selected system events
@@ -317,6 +323,7 @@ if (!function_exists('saveTemplateAccess')) {
 
 if (!function_exists('saveTemplateVarAccess')) {
     /**
+     * @param int $id
      * @return void
      */
     function saveTemplateVarAccess($id)
@@ -344,6 +351,7 @@ if (!function_exists('saveTemplateVarAccess')) {
 
 if (!function_exists('saveVarRoles')) {
     /**
+     * @param int $id
      * @return void
      */
     function saveVarRoles($id)
@@ -370,6 +378,10 @@ if (!function_exists('saveVarRoles')) {
 }
 
 if (!function_exists('saveDocumentAccessPermissons')) {
+    /**
+     * @param int $id
+     * @return void
+     */
     function saveDocumentAccessPermissons($id)
     {
         $modx = evo();
@@ -474,9 +486,9 @@ if (!function_exists('webAlertAndQuit')) {
     /**
      * Web alert -  sends an alert to web browser
      *
-     * @param $msg
-     * @param $action int
-     * @param $id int|bool
+     * @param string $msg
+     * @param int $action
+     * @param int|bool $id
      */
     function webAlertAndQuit($msg, $action, $id = false)
     {

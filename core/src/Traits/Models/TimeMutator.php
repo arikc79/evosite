@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Carbon;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Model
+ */
 trait TimeMutator
 {
     protected function convertTimestamp($value) :? Carbon

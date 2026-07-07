@@ -6,6 +6,7 @@
 				<li>
 					{!! \EvolutionCMS\Main\Helper::articleThumb($article->id) !!}
 					<a href="{{ $article->fullLink }}">{{ $article->pagetitle }}</a>
+					<span class="popular-articles__date">{{ \EvolutionCMS\Main\Helper::formatDate($article->createdon_orig) }}</span>
 					@if($article->hits > 0)
 						<span class="popular-articles__hits">{{ $article->hits }} @lang('sidebar_popular_views')</span>
 					@endif

@@ -37,11 +37,48 @@
 		color: #3c3b3b;
 	}
 
+	.popular-articles__date {
+		display: block;
+		margin-top: 0.35em;
+		font-size: 0.8em;
+		color: #646464;
+	}
+
 	.popular-articles__hits {
 		display: block;
 		margin-top: 0.35em;
 		font-size: 0.8em;
 		color: #a8431f;
+	}
+
+/* Author box (article page) */
+
+	.author-box {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.5em;
+		margin-top: 2.5em;
+		padding-top: 2em;
+		border-top: solid 1px rgba(160, 160, 160, 0.3);
+	}
+
+	.author-box__avatar {
+		flex: 0 0 auto;
+		width: 5em;
+		height: 5em;
+		border-radius: 100%;
+		object-fit: cover;
+	}
+
+	.author-box__title {
+		margin: 0 0 0.35em 0;
+		font-size: 1em;
+	}
+
+	.author-box__about p {
+		margin: 0;
+		font-size: 0.9em;
+		color: #646464;
 	}
 
 /* Breadcrumbs */
